@@ -1,6 +1,8 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, Platform, StatusBar } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+
+// console.log("Platform:", Platform.OS, StatusBar.currentHeight);
 
 export default function App() {
   const drinks = ["Coffee", "Tea", "Milk"];
@@ -20,7 +22,7 @@ export default function App() {
               </View>
             ))}
           </View>
-          <StatusBar style="auto" />
+          <ExpoStatusBar style="auto" />
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
@@ -30,7 +32,7 @@ export default function App() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#8f8f8f",
+    backgroundColor: "#fff",
   },
   container: {
     flex: 1,
@@ -38,13 +40,17 @@ const styles = StyleSheet.create({
   },
   searchHeaderContainer: {
     width: "100%",
-    paddingHorizontal: 20,
-    paddingVertical: 6,
     backgroundColor: "#8f8f8f",
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    justifyContent: "center",
   },
   searchText: {
     fontSize: 24,
+    lineHeight: 28,
     fontWeight: "bold",
+    includeFontPadding: false,
+    textAlignVertical: "center",
   },
   mainContent: {
     flex: 1,
