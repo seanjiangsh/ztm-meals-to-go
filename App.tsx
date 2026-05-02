@@ -1,73 +1,35 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Platform, StatusBar } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import DrinksSearchList from "./src/components/DrinksSearchList";
 
 // console.log("Platform:", Platform.OS, StatusBar.currentHeight);
 
-export default function App() {
-  const drinks = ["Coffee", "Tea", "Milk"];
+const DRINKS = ["Coffee", "Tea", "Milk"];
 
+export default function App() {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <View style={styles.searchHeaderContainer}>
-            <Text style={styles.searchText}>Search</Text>
+    <PaperProvider>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.safeArea}>
+          <View style={styles.container}>
+            <DrinksSearchList drinks={DRINKS} />
+            <ExpoStatusBar style="auto" />
           </View>
-          <View style={styles.mainContent}>
-            {drinks.map((drink) => (
-              <View key={drink} style={styles.listItem}>
-                <Text style={styles.listBullet}>{"\u2022"}</Text>
-                <Text style={styles.listItemText}>{drink}</Text>
-              </View>
-            ))}
-          </View>
-          <ExpoStatusBar style="auto" />
-        </View>
-      </SafeAreaView>
-    </SafeAreaProvider>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </PaperProvider>
   );
 }
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
   },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-  },
-  searchHeaderContainer: {
-    width: "100%",
-    backgroundColor: "#8f8f8f",
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    justifyContent: "center",
-  },
-  searchText: {
-    fontSize: 24,
-    lineHeight: 28,
-    fontWeight: "bold",
-    includeFontPadding: false,
-    textAlignVertical: "center",
-  },
-  mainContent: {
-    flex: 1,
-    width: "100%",
-    paddingHorizontal: 20,
-    backgroundColor: "#e0e0e0",
-  },
-  listItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 8,
-  },
-  listBullet: {
-    fontSize: 18,
-    marginRight: 8,
-  },
-  listItemText: {
-    fontSize: 16,
-  },
+    backgroundColor: "#fff"
+  }
 });
