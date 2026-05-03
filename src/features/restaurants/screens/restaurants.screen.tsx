@@ -1,7 +1,9 @@
 import { memo } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+
+import RestaurantInfo from "../components/restaurant-info.component";
 
 function RestaurantsScreen() {
   return (
@@ -11,7 +13,7 @@ function RestaurantsScreen() {
           <Searchbar placeholder="Search restaurants" value="" />
         </View>
         <View style={styles.list}>
-          <Text>list</Text>
+          <RestaurantInfo />
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
