@@ -12,7 +12,7 @@ interface RestaurantInfoProps {
   isClosedTemporarily?: boolean;
 }
 
-function RestaurantInfo(props: RestaurantInfoProps) {
+function RestaurantInfoCard(props: RestaurantInfoProps) {
   const {
     name = "Unknown Restaurant",
     icon,
@@ -59,7 +59,7 @@ function RestaurantInfo(props: RestaurantInfoProps) {
   );
 }
 
-export default memo(RestaurantInfo);
+export default memo(RestaurantInfoCard);
 
 const styles = StyleSheet.create({
   card: {
