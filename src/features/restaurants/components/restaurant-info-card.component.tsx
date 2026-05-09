@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
@@ -28,6 +28,50 @@ const DetailsRow = styled(View)`
   margin-bottom: 8px;
 `;
 
+const CardContent = styled(Card.Content)`
+  padding-top: 14px;
+  padding-bottom: 16px;
+`;
+
+const NameText = styled(Text)`
+  color: #1e1e1e;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+`;
+
+const Icon = styled(Image)`
+  border-radius: 12px;
+  height: 20px;
+  margin-left: auto;
+  width: 20px;
+`;
+
+const AddressText = styled(Text)`
+  color: #5b5b5b;
+  font-size: 14px;
+`;
+
+const StarText = styled(Text)`
+  color: #d4a017;
+  font-size: 14px;
+  margin-right: 2px;
+`;
+
+const ClosedTemporarilyText = styled(Text)`
+  color: #c1121f;
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 12px;
+`;
+
+const OpenNowText = styled(Text)`
+  color: #2d6a4f;
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 12px;
+`;
+
 interface RestaurantInfoProps {
   name?: string;
   icon?: string;
@@ -54,75 +98,35 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
   return (
     <StyledCard mode="elevated">
       <StyledCardCover source={{ uri: photos[0] }} />
-      <Card.Content style={styles.content}>
-        <Text numberOfLines={1} style={styles.name}>
+      <CardContent>
+        <NameText numberOfLines={1}>
           {name}
-        </Text>
+        </NameText>
 
         <RatingRow>
           {ratingArray.map((_, index) => (
-            <Text key={`${name}-star-${index}`} style={styles.star}>
+            <StarText key={`${name}-star-${index}`}>
               ★
-            </Text>
+            </StarText>
           ))}
         </RatingRow>
 
         <DetailsRow>
           {isClosedTemporarily ? (
-            <Text style={styles.closedTemporarily}>CLOSED TEMPORARILY</Text>
+            <ClosedTemporarilyText>CLOSED TEMPORARILY</ClosedTemporarilyText>
           ) : null}
 
-          {isOpenNow ? <Text style={styles.openNow}>OPEN NOW</Text> : null}
+          {isOpenNow ? <OpenNowText>OPEN NOW</OpenNowText> : null}
 
-          {icon ? <Image style={styles.icon} source={{ uri: icon }} /> : null}
+          {icon ? <Icon source={{ uri: icon }} /> : null}
         </DetailsRow>
 
-        <Text numberOfLines={2} style={styles.address}>
+        <AddressText numberOfLines={2}>
           {address}
-        </Text>
-      </Card.Content>
+        </AddressText>
+      </CardContent>
     </StyledCard>
   );
 }
 
 export default memo(RestaurantInfoCard);
-
-const styles = StyleSheet.create({
-  content: {
-    paddingTop: 14,
-    paddingBottom: 16
-  },
-  name: {
-    color: "#1e1e1e",
-    fontSize: 18,
-    fontWeight: "700",
-    marginBottom: 8
-  },
-  star: {
-    color: "#d4a017",
-    fontSize: 14,
-    marginRight: 2
-  },
-  closedTemporarily: {
-    color: "#c1121f",
-    fontSize: 12,
-    fontWeight: "700",
-    marginRight: 12
-  },
-  openNow: {
-    color: "#2d6a4f",
-    fontSize: 12,
-    fontWeight: "700",
-    marginRight: 12
-  },
-  icon: {
-    borderRadius: 12,
-    height: 20,
-    marginLeft: "auto",
-    width: 20
-  },
-  address: {
-    color: "#5b5b5b",
-    fontSize: 14
-  }
-});
