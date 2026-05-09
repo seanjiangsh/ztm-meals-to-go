@@ -1,6 +1,32 @@
 import { memo } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Card } from "react-native-paper";
+import styled from "styled-components/native";
+
+const StyledCard = styled(Card)`
+  background-color: #ffffff;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  overflow: hidden;
+`;
+
+const StyledCardCover = styled(Card.Cover)`
+  background-color: #e3e3e3;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  height: 180px;
+`;
+
+const RatingRow = styled(View)`
+  flex-direction: row;
+  margin-bottom: 8px;
+`;
+
+const DetailsRow = styled(View)`
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 8px;
+`;
 
 interface RestaurantInfoProps {
   name?: string;
@@ -26,22 +52,22 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
   const ratingArray = Array.from({ length: Math.max(0, Math.floor(rating)) });
 
   return (
-    <Card style={styles.card} mode="elevated">
-      <Card.Cover style={styles.cover} source={{ uri: photos[0] }} />
+    <StyledCard mode="elevated">
+      <StyledCardCover source={{ uri: photos[0] }} />
       <Card.Content style={styles.content}>
         <Text numberOfLines={1} style={styles.name}>
           {name}
         </Text>
 
-        <View style={styles.ratingRow}>
+        <RatingRow>
           {ratingArray.map((_, index) => (
             <Text key={`${name}-star-${index}`} style={styles.star}>
               ★
             </Text>
           ))}
-        </View>
+        </RatingRow>
 
-        <View style={styles.detailsRow}>
+        <DetailsRow>
           {isClosedTemporarily ? (
             <Text style={styles.closedTemporarily}>CLOSED TEMPORARILY</Text>
           ) : null}
@@ -49,31 +75,19 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
           {isOpenNow ? <Text style={styles.openNow}>OPEN NOW</Text> : null}
 
           {icon ? <Image style={styles.icon} source={{ uri: icon }} /> : null}
-        </View>
+        </DetailsRow>
 
         <Text numberOfLines={2} style={styles.address}>
           {address}
         </Text>
       </Card.Content>
-    </Card>
+    </StyledCard>
   );
 }
 
 export default memo(RestaurantInfoCard);
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "#ffffff",
-    borderRadius: 16,
-    marginBottom: 16,
-    overflow: "hidden"
-  },
-  cover: {
-    backgroundColor: "#e3e3e3",
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-    height: 180
-  },
   content: {
     paddingTop: 14,
     paddingBottom: 16
@@ -84,19 +98,10 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 8
   },
-  ratingRow: {
-    flexDirection: "row",
-    marginBottom: 8
-  },
   star: {
     color: "#d4a017",
     fontSize: 14,
     marginRight: 2
-  },
-  detailsRow: {
-    alignItems: "center",
-    flexDirection: "row",
-    marginBottom: 8
   },
   closedTemporarily: {
     color: "#c1121f",
