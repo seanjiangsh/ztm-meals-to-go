@@ -1,6 +1,43 @@
 import { memo, useMemo, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { Searchbar } from "react-native-paper";
+import styled from "styled-components/native";
+
+const SearchHeaderContainer = styled(View)`
+  width: 100%;
+  background-color: #8f8f8f;
+  padding-horizontal: 20px;
+  padding-vertical: 8px;
+  justify-content: center;
+`;
+
+const ContentContainer = styled(View)`
+  flex: 1;
+  width: 100%;
+  padding-horizontal: 20px;
+  background-color: #e0e0e0;
+`;
+
+const ListItem = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  padding-vertical: 8px;
+`;
+
+const ListBullet = styled(Text)`
+  font-size: 18px;
+  margin-right: 8px;
+`;
+
+const ListItemText = styled(Text)`
+  font-size: 16px;
+`;
+
+const EmptyStateText = styled(Text)`
+  margin-top: 16px;
+  font-size: 16px;
+  color: #4f4f4f;
+`;
 
 type DrinksSearchListProps = {
   drinks: string[];
@@ -16,57 +53,22 @@ function DrinksSearchList({ drinks }: DrinksSearchListProps) {
 
   return (
     <>
-      <View style={styles.searchHeaderContainer}>
+      <SearchHeaderContainer>
         <Searchbar placeholder="Search drinks" value={searchQuery} onChangeText={setSearchQuery} />
-      </View>
+      </SearchHeaderContainer>
 
-      <View style={styles.mainContent}>
+      <ContentContainer>
         {filteredDrinks.map((drink) => (
-          <View key={drink} style={styles.listItem}>
-            <Text style={styles.listBullet}>{"\u2022"}</Text>
-            <Text style={styles.listItemText}>{drink}</Text>
-          </View>
+          <ListItem key={drink}>
+            <ListBullet>{"\u2022"}</ListBullet>
+            <ListItemText>{drink}</ListItemText>
+          </ListItem>
         ))}
 
-        {filteredDrinks.length === 0 ? (
-          <Text style={styles.emptyStateText}>No drinks found.</Text>
-        ) : null}
-      </View>
+        {filteredDrinks.length === 0 ? <EmptyStateText>No drinks found.</EmptyStateText> : null}
+      </ContentContainer>
     </>
   );
 }
 
 export default memo(DrinksSearchList);
-
-const styles = StyleSheet.create({
-  searchHeaderContainer: {
-    width: "100%",
-    backgroundColor: "#8f8f8f",
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    justifyContent: "center"
-  },
-  mainContent: {
-    flex: 1,
-    width: "100%",
-    paddingHorizontal: 20,
-    backgroundColor: "#e0e0e0"
-  },
-  listItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 8
-  },
-  listBullet: {
-    fontSize: 18,
-    marginRight: 8
-  },
-  listItemText: {
-    fontSize: 16
-  },
-  emptyStateText: {
-    marginTop: 16,
-    fontSize: 16,
-    color: "#4f4f4f"
-  }
-});

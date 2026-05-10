@@ -1,38 +1,39 @@
 import { memo } from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import styled from "styled-components/native";
 
 import RestaurantInfoCard from "../components/restaurant-info-card.component";
+
+const SafeAreaContainer = styled(SafeAreaView)`
+  flex: 1;
+  background-color: #fff;
+`;
+
+const SearchBarContainer = styled(View)`
+  padding: 16px;
+`;
+
+const ListContainer = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  padding: 16px;
+`;
 
 function RestaurantsScreen() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.safeArea}>
-        <View style={styles.searchBar}>
+      <SafeAreaContainer>
+        <SearchBarContainer>
           <Searchbar placeholder="Search restaurants" value="" />
-        </View>
-        <View style={styles.list}>
+        </SearchBarContainer>
+        <ListContainer>
           <RestaurantInfoCard />
-        </View>
-      </SafeAreaView>
+        </ListContainer>
+      </SafeAreaContainer>
     </SafeAreaProvider>
   );
 }
 
 export default memo(RestaurantsScreen);
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#fff"
-  },
-  searchBar: {
-    padding: 16
-  },
-  list: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 16
-  }
-});

@@ -3,14 +3,14 @@ import { Image, Text, View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
-const StyledCard = styled(Card)`
+const CardContainer = styled(Card)`
   background-color: #ffffff;
   border-radius: 16px;
   margin-bottom: 16px;
   overflow: hidden;
 `;
 
-const StyledCardCover = styled(Card.Cover)`
+const CardCoverImage = styled(Card.Cover)`
   background-color: #e3e3e3;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -40,7 +40,7 @@ const NameText = styled(Text)`
   margin-bottom: 8px;
 `;
 
-const Icon = styled(Image)`
+const IconImage = styled(Image)`
   border-radius: 12px;
   height: 20px;
   margin-left: auto;
@@ -96,18 +96,14 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
   const ratingArray = Array.from({ length: Math.max(0, Math.floor(rating)) });
 
   return (
-    <StyledCard mode="elevated">
-      <StyledCardCover source={{ uri: photos[0] }} />
+    <CardContainer mode="elevated">
+      <CardCoverImage source={{ uri: photos[0] }} />
       <CardContent>
-        <NameText numberOfLines={1}>
-          {name}
-        </NameText>
+        <NameText numberOfLines={1}>{name}</NameText>
 
         <RatingRow>
           {ratingArray.map((_, index) => (
-            <StarText key={`${name}-star-${index}`}>
-              ★
-            </StarText>
+            <StarText key={`${name}-star-${index}`}>★</StarText>
           ))}
         </RatingRow>
 
@@ -118,14 +114,12 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
 
           {isOpenNow ? <OpenNowText>OPEN NOW</OpenNowText> : null}
 
-          {icon ? <Icon source={{ uri: icon }} /> : null}
+          {icon ? <IconImage source={{ uri: icon }} /> : null}
         </DetailsRow>
 
-        <AddressText numberOfLines={2}>
-          {address}
-        </AddressText>
+        <AddressText numberOfLines={2}>{address}</AddressText>
       </CardContent>
-    </StyledCard>
+    </CardContainer>
   );
 }
 
