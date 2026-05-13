@@ -3,41 +3,45 @@ import { Image, Text, View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
+import { colors } from "../../../infra/colors";
+import { fontSizes } from "../../../infra/fonts";
+import { space } from "../../../infra/spacing";
+
 const CardContainer = styled(Card)`
-  background-color: #ffffff;
-  border-radius: 16px;
-  margin-bottom: 16px;
+  background-color: ${colors.bg.primary};
+  border-radius: ${space[3]};
+  margin-bottom: ${space[3]};
   overflow: hidden;
 `;
 
 const CardCoverImage = styled(Card.Cover)`
-  background-color: #e3e3e3;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  background-color: ${colors.ui.disabled};
+  border-top-left-radius: ${space[3]};
+  border-top-right-radius: ${space[3]};
   height: 180px;
 `;
 
 const RatingRow = styled(View)`
   flex-direction: row;
-  margin-bottom: 8px;
+  margin-bottom: ${space[2]};
 `;
 
 const DetailsRow = styled(View)`
   align-items: center;
   flex-direction: row;
-  margin-bottom: 8px;
+  margin-bottom: ${space[2]};
 `;
 
 const CardContent = styled(Card.Content)`
-  padding-top: 14px;
-  padding-bottom: 16px;
+  padding-top: ${space[3]};
+  padding-bottom: ${space[3]};
 `;
 
 const NameText = styled(Text)`
-  color: #1e1e1e;
-  font-size: 18px;
+  color: ${colors.text.primary};
+  font-size: ${fontSizes.title};
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: ${space[2]};
 `;
 
 const IconImage = styled(Image)`
@@ -48,26 +52,26 @@ const IconImage = styled(Image)`
 `;
 
 const AddressText = styled(Text)`
-  color: #5b5b5b;
-  font-size: 14px;
+  color: ${colors.text.secondary};
+  font-size: ${fontSizes.button};
 `;
 
 const StarText = styled(Text)`
   color: #d4a017;
-  font-size: 14px;
+  font-size: ${fontSizes.button};
   margin-right: 2px;
 `;
 
 const ClosedTemporarilyText = styled(Text)`
-  color: #c1121f;
-  font-size: 12px;
+  color: ${colors.text.error};
+  font-size: ${fontSizes.caption};
   font-weight: 700;
   margin-right: 12px;
 `;
 
 const OpenNowText = styled(Text)`
-  color: #2d6a4f;
-  font-size: 12px;
+  color: ${colors.text.success};
+  font-size: ${fontSizes.caption};
   font-weight: 700;
   margin-right: 12px;
 `;
