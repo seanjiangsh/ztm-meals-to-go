@@ -3,40 +3,46 @@ import { Text, View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
+import { colors } from "../infra/colors";
+import { fontSizes } from "../infra/fonts";
+import { space } from "../infra/spacing";
+
 const SearchHeaderContainer = styled(View)`
   width: 100%;
-  background-color: #8f8f8f;
-  padding-horizontal: 20px;
-  padding-vertical: 8px;
+  background-color: ${colors.ui.secondary};
+  padding-horizontal: ${space[3]};
+  padding-vertical: ${space[2]};
   justify-content: center;
 `;
 
 const ContentContainer = styled(View)`
   flex: 1;
   width: 100%;
-  padding-horizontal: 20px;
-  background-color: #e0e0e0;
+  padding-horizontal: ${space[3]};
+  background-color: ${colors.ui.disabled};
 `;
 
 const ListItem = styled(View)`
   flex-direction: row;
   align-items: center;
-  padding-vertical: 8px;
+  padding-vertical: ${space[2]};
 `;
 
 const ListBullet = styled(Text)`
-  font-size: 18px;
-  margin-right: 8px;
+  color: ${colors.text.primary};
+  font-size: ${fontSizes.body};
+  margin-right: ${space[2]};
 `;
 
 const ListItemText = styled(Text)`
-  font-size: 16px;
+  color: ${colors.text.primary};
+  font-size: ${fontSizes.body};
 `;
 
 const EmptyStateText = styled(Text)`
-  margin-top: 16px;
-  font-size: 16px;
-  color: #4f4f4f;
+  margin-top: ${space[3]};
+  font-size: ${fontSizes.body};
+  color: ${colors.text.secondary};
 `;
 
 type DrinksSearchListProps = {
