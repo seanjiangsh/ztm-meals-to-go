@@ -4,9 +4,9 @@ import { Searchbar } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 
-import { colors } from "../../../infra/colors";
-import { space } from "../../../infra/spacing";
-import RestaurantInfoCard from "../components/restaurant-info-card.component";
+import RestaurantInfoCard from "@/features/restaurants/components/restaurant-info-card.component";
+import { colors } from "@/infra/colors";
+import { space } from "@/infra/spacing";
 
 const SafeAreaContainer = styled(SafeAreaView)`
   flex: 1;
