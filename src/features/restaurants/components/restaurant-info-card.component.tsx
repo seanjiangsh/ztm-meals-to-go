@@ -3,9 +3,9 @@ import { Image, Text, View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
-import { colors } from "../../../infra/colors";
-import { fontSizes } from "../../../infra/fonts";
-import { space } from "../../../infra/spacing";
+import { colors } from "@/infra/colors";
+import { fontSizes } from "@/infra/fonts";
+import { space } from "@/infra/spacing";
 
 const CardContainer = styled(Card)`
   background-color: ${colors.bg.primary};
