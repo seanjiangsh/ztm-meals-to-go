@@ -4,7 +4,7 @@ import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
 import { colors } from "@/infra/colors";
-import { fontSizes } from "@/infra/fonts";
+import { fontSizes, fonts } from "@/infra/fonts";
 import { space } from "@/infra/spacing";
 
 const SearchHeaderContainer = styled(View)`
@@ -31,17 +31,20 @@ const ListItem = styled(View)`
 const ListBullet = styled(Text)`
   color: ${colors.text.primary};
   font-size: ${fontSizes.body};
+  font-family: ${fonts.body};
   margin-right: ${space[2]};
 `;
 
 const ListItemText = styled(Text)`
   color: ${colors.text.primary};
   font-size: ${fontSizes.body};
+  font-family: ${fonts.body};
 `;
 
 const EmptyStateText = styled(Text)`
   margin-top: ${space[3]};
   font-size: ${fontSizes.body};
+  font-family: ${fonts.body};
   color: ${colors.text.secondary};
 `;
 

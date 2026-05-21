@@ -4,7 +4,7 @@ import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
 import { colors } from "@/infra/colors";
-import { fontSizes } from "@/infra/fonts";
+import { fontSizes, fonts } from "@/infra/fonts";
 import { space } from "@/infra/spacing";
 
 const CardContainer = styled(Card)`
@@ -40,6 +40,7 @@ const CardContent = styled(Card.Content)`
 const NameText = styled(Text)`
   color: ${colors.text.primary};
   font-size: ${fontSizes.title};
+  font-family: ${fonts.heading};
   font-weight: 700;
   margin-bottom: ${space[2]};
 `;
@@ -54,17 +55,20 @@ const IconImage = styled(Image)`
 const AddressText = styled(Text)`
   color: ${colors.text.secondary};
   font-size: ${fontSizes.button};
+  font-family: ${fonts.body};
 `;
 
 const StarText = styled(Text)`
   color: #d4a017;
   font-size: ${fontSizes.button};
+  font-family: ${fonts.body};
   margin-right: 2px;
 `;
 
 const ClosedTemporarilyText = styled(Text)`
   color: ${colors.text.error};
   font-size: ${fontSizes.caption};
+  font-family: ${fonts.heading};
   font-weight: 700;
   margin-right: 12px;
 `;
@@ -72,6 +76,7 @@ const ClosedTemporarilyText = styled(Text)`
 const OpenNowText = styled(Text)`
   color: ${colors.text.success};
   font-size: ${fontSizes.caption};
+  font-family: ${fonts.heading};
   font-weight: 700;
   margin-right: 12px;
 `;
