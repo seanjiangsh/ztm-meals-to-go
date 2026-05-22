@@ -40,7 +40,7 @@ const CardContent = styled(Card.Content)`
 const NameText = styled(Text)`
   color: ${colors.text.primary};
   font-size: ${fontSizes.title};
-  font-family: ${fonts.heading};
+  font-family: ${fonts.body};
   font-weight: 700;
   margin-bottom: ${space[2]};
 `;
