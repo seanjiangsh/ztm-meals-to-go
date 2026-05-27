@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Image, Text, View } from "react-native";
 import { Card } from "react-native-paper";
+import RatingStar from "@/assets/rating-star.svg";
 import styled from "styled-components/native";
 
 import { colors } from "@/infra/colors";
@@ -58,13 +59,6 @@ const AddressText = styled(Text)`
   font-family: ${fonts.body};
 `;
 
-const StarText = styled(Text)`
-  color: #d4a017;
-  font-size: ${fontSizes.button};
-  font-family: ${fonts.body};
-  margin-right: 2px;
-`;
-
 const ClosedTemporarilyText = styled(Text)`
   color: ${colors.text.error};
   font-size: ${fontSizes.caption};
@@ -112,7 +106,7 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
 
         <RatingRow>
           {ratingArray.map((_, index) => (
-            <StarText key={`${name}-star-${index}`}>★</StarText>
+            <RatingStar key={`${name}-star-${index}`} width={20} height={20} />
           ))}
         </RatingRow>
 
