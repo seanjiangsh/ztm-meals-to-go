@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Image, Text, View } from "react-native";
 import { Card } from "react-native-paper";
+import IsOpen from "@/assets/is-open.svg";
 import RatingStar from "@/assets/rating-star.svg";
 import styled from "styled-components/native";
 
@@ -118,6 +119,7 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
           {isOpenNow ? <OpenNowText>OPEN NOW</OpenNowText> : null}
 
           {icon ? <IconImage source={{ uri: icon }} /> : null}
+          {isOpenNow ? <IsOpen width={20} height={20} style={{ marginLeft: "auto" }} /> : null}
         </DetailsRow>
 
         <AddressText numberOfLines={2}>{address}</AddressText>
