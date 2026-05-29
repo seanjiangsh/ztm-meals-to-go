@@ -1,0 +1,23 @@
+# ── Supply-chain security ──────────────────────────────────────────────────────
+# Ref: https://pnpm.io/supply-chain-security
+
+# 1. Build-script allowlist.
+#    Only packages listed here may run install/postinstall scripts.
+#    Run `pnpm install` to discover which packages fire postinstall scripts,
+#    then add them here.
+# allowBuilds:
+#   some-package: true
+
+# 2. Block transitive deps from using exotic sources (git URLs, raw tarballs).
+blockExoticSubdeps: true
+
+# 3. Delay brand-new package versions by 3 days.
+#    Malicious releases are usually yanked within hours; 3 days is a safe buffer.
+minimumReleaseAge: 4320 # minutes (= 3 days)
+minimumReleaseAgeStrict: false
+
+# 4. Trust policy — disabled: ua-parser-js@1.0.41 (transitive via react-native-web →
+#    fbjs) triggers a false-positive trust downgrade in this project. Re-enable when
+#    that transitive dep is updated to a version with provenance attestation.
+# trustPolicy: no-downgrade
+# trustPolicyIgnoreAfter: 525600 # minutes (= 1 year)
