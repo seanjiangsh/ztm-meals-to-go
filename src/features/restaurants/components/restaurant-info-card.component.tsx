@@ -8,6 +8,7 @@ import styled from "styled-components/native";
 import { colors } from "@/infra/colors";
 import { fontSizes, fonts } from "@/infra/fonts";
 import { space } from "@/infra/spacing";
+import Spacer from "./spacer.component";
 
 const CardContainer = styled(Card)`
   background-color: ${colors.bg.primary};
@@ -23,15 +24,19 @@ const CardCoverImage = styled(Card.Cover)`
   height: 180px;
 `;
 
-const RatingRow = styled(View)`
-  flex-direction: row;
-  margin-bottom: ${space[2]};
-`;
-
-const DetailsRow = styled(View)`
+const InfoRow = styled(View)`
   align-items: center;
   flex-direction: row;
-  margin-bottom: ${space[2]};
+`;
+
+const RatingContainer = styled(View)`
+  flex-direction: row;
+`;
+
+const StatusContainer = styled(View)`
+  align-items: center;
+  flex-direction: row;
+  margin-left: auto;
 `;
 
 const CardContent = styled(Card.Content)`
@@ -44,7 +49,6 @@ const NameText = styled(Text)`
   font-size: ${fontSizes.title};
   font-family: ${fonts.body};
   font-weight: 700;
-  margin-bottom: ${space[2]};
 `;
 
 const IconImage = styled(Image)`
@@ -105,23 +109,23 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
       <CardContent>
         <NameText numberOfLines={1}>{name}</NameText>
 
-        <RatingRow>
-          {ratingArray.map((_, index) => (
-            <RatingStar key={`${name}-star-${index}`} width={20} height={20} />
-          ))}
-        </RatingRow>
-
-        <DetailsRow>
-          {isClosedTemporarily ? (
-            <ClosedTemporarilyText>CLOSED TEMPORARILY</ClosedTemporarilyText>
-          ) : null}
-
-          {isOpenNow ? <OpenNowText>OPEN NOW</OpenNowText> : null}
-
-          {icon ? <IconImage source={{ uri: icon }} /> : null}
-          {isOpenNow ? <IsOpen width={20} height={20} style={{ marginLeft: "auto" }} /> : null}
-        </DetailsRow>
-
+        <InfoRow>
+          <RatingContainer>
+            {ratingArray.map((_, index) => (
+              <RatingStar key={`${name}-star-${index}`} width={20} height={20} />
+            ))}
+          </RatingContainer>
+          <StatusContainer>
+            {isClosedTemporarily ? (
+              <ClosedTemporarilyText>CLOSED TEMPORARILY</ClosedTemporarilyText>
+            ) : null}
+            <Spacer variant="left.large" />
+            {isOpenNow ? <OpenNowText>OPEN NOW</OpenNowText> : null}
+            <Spacer variant="left.large" />
+            {icon ? <IconImage source={{ uri: icon }} /> : null}
+            {isOpenNow ? <IsOpen width={20} height={20} /> : null}
+          </StatusContainer>
+        </InfoRow>
         <AddressText numberOfLines={2}>{address}</AddressText>
       </CardContent>
     </CardContainer>

@@ -3,7 +3,7 @@ import { Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { useFonts } from "expo-font";
 import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 
 import RestaurantsScreen from "@/features/restaurants/screens/restaurants.screen";
 import { theme } from "@/infra/index";
