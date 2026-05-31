@@ -8,7 +8,7 @@ import styled from "styled-components/native";
 import { colors } from "@/infra/colors";
 import { fontSizes, fonts } from "@/infra/fonts";
 import { space } from "@/infra/spacing";
-import Spacer from "./spacer.component";
+import { Spacer } from "./spacer.component";
 
 const CardContainer = styled(Card)`
   background-color: ${colors.bg.primary};
@@ -119,9 +119,9 @@ function RestaurantInfoCard(props: RestaurantInfoProps) {
             {isClosedTemporarily ? (
               <ClosedTemporarilyText>CLOSED TEMPORARILY</ClosedTemporarilyText>
             ) : null}
-            <Spacer variant="left.large" />
+            <Spacer position="left" size="large" />
             {isOpenNow ? <OpenNowText>OPEN NOW</OpenNowText> : null}
-            <Spacer variant="left.large" />
+            <Spacer position="left" size="large" />
             {icon ? <IconImage source={{ uri: icon }} /> : null}
             {isOpenNow ? <IsOpen width={20} height={20} /> : null}
           </StatusContainer>
