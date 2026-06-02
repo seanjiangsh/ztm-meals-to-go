@@ -1,13 +1,13 @@
 import { memo } from "react";
-import { Image, Text, View } from "react-native";
+import { Image, View } from "react-native";
 import { Card } from "react-native-paper";
 import IsOpen from "@/assets/is-open.svg";
 import RatingStar from "@/assets/rating-star.svg";
 import styled from "styled-components/native";
 
 import { colors } from "@/infra/colors";
-import { fontSizes, fonts } from "@/infra/fonts";
 import { space } from "@/infra/spacing";
+import { Text } from "./typography/text.component";
 import { Spacer } from "./spacer.component";
 
 const CardContainer = styled(Card)`
@@ -45,9 +45,7 @@ const CardContent = styled(Card.Content)`
 `;
 
 const NameText = styled(Text)`
-  color: ${colors.text.primary};
-  font-size: ${fontSizes.title};
-  font-family: ${fonts.body};
+  font-size: ${({ theme }) => theme.fontSizes.title};
   font-weight: 700;
 `;
 
@@ -59,24 +57,19 @@ const IconImage = styled(Image)`
 `;
 
 const AddressText = styled(Text)`
-  color: ${colors.text.secondary};
-  font-size: ${fontSizes.button};
-  font-family: ${fonts.body};
+  color: ${({ theme }) => theme.colors.text.secondary};
+  font-size: ${({ theme }) => theme.fontSizes.button};
 `;
 
-const ClosedTemporarilyText = styled(Text)`
-  color: ${colors.text.error};
-  font-size: ${fontSizes.caption};
-  font-family: ${fonts.heading};
-  font-weight: 700;
+const ClosedTemporarilyText = styled(Text).attrs({ variant: "caption" })`
+  color: ${({ theme }) => theme.colors.text.error};
+  font-family: ${({ theme }) => theme.fonts.heading};
   margin-right: 12px;
 `;
 
-const OpenNowText = styled(Text)`
-  color: ${colors.text.success};
-  font-size: ${fontSizes.caption};
-  font-family: ${fonts.heading};
-  font-weight: 700;
+const OpenNowText = styled(Text).attrs({ variant: "caption" })`
+  color: ${({ theme }) => theme.colors.text.success};
+  font-family: ${({ theme }) => theme.fonts.heading};
   margin-right: 12px;
 `;
 
