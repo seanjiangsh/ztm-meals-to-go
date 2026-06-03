@@ -1,10 +1,10 @@
 import { memo, useMemo, useState } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
+import { Text } from "@/features/restaurants/components/typography/text.component";
 import { colors } from "@/infra/colors";
-import { fontSizes, fonts } from "@/infra/fonts";
 import { space } from "@/infra/spacing";
 
 const SearchHeaderContainer = styled(View)`
@@ -29,23 +29,13 @@ const ListItem = styled(View)`
 `;
 
 const ListBullet = styled(Text)`
-  color: ${colors.text.primary};
-  font-size: ${fontSizes.body};
-  font-family: ${fonts.body};
   margin-right: ${space[2]};
 `;
 
-const ListItemText = styled(Text)`
-  color: ${colors.text.primary};
-  font-size: ${fontSizes.body};
-  font-family: ${fonts.body};
-`;
+const ListItemText = styled(Text)``;
 
-const EmptyStateText = styled(Text)`
+const EmptyStateText = styled(Text).attrs({ variant: "hint" })`
   margin-top: ${space[3]};
-  font-size: ${fontSizes.body};
-  font-family: ${fonts.body};
-  color: ${colors.text.secondary};
 `;
 
 type DrinksSearchListProps = {

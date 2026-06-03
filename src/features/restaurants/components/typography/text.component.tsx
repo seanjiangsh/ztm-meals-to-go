@@ -16,6 +16,7 @@ const body = (theme: DefaultTheme) => `
 
 const hint = (theme: DefaultTheme) => `
     font-size: ${theme.fontSizes.body};
+    color: ${theme.colors.text.secondary};
 `;
 
 const error = (theme: DefaultTheme) => `
