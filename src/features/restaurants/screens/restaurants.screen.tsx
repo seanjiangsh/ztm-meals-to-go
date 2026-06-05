@@ -1,5 +1,5 @@
 import { memo, useState } from "react";
-import { View } from "react-native";
+import { FlatList, View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
@@ -7,6 +7,15 @@ import styled from "styled-components/native";
 import RestaurantInfoCard from "@/features/restaurants/components/restaurant-info-card.component";
 import { colors } from "@/infra/colors";
 import { space } from "@/infra/spacing";
+
+const MOCK_RESTAURANTS = Array.from({ length: 15 }, (_, i) => ({
+  id: String(i + 1),
+  name: `Restaurant ${i + 1}`,
+  address: `${(i + 1) * 10} Mock Street`,
+  rating: (i % 5) + 1,
+  isOpenNow: i % 3 !== 0,
+  isClosedTemporarily: i % 7 === 0
+}));
 
 const SafeAreaContainer = styled(SafeAreaView)`
   flex: 1;
@@ -36,7 +45,19 @@ function RestaurantsScreen() {
         />
       </SearchBarContainer>
       <ListContainer>
-        <RestaurantInfoCard />
+        <FlatList
+          data={MOCK_RESTAURANTS}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <RestaurantInfoCard
+              name={item.name}
+              address={item.address}
+              rating={item.rating}
+              isOpenNow={item.isOpenNow}
+              isClosedTemporarily={item.isClosedTemporarily}
+            />
+          )}
+        />
       </ListContainer>
     </SafeAreaContainer>
   );
