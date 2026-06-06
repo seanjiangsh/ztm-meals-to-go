@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import styled from "styled-components/native";
 import { DefaultTheme } from "styled-components/native";
 
@@ -8,6 +9,7 @@ interface SpacerProps {
   position?: SpacerPosition;
   size?: SpacerSize;
   theme?: DefaultTheme;
+  children?: ReactNode;
 }
 
 const sizeVariant: Record<SpacerSize, number> = {
@@ -35,8 +37,12 @@ const SpacerView = styled.View<SpacerProps>`
   ${({ position = "top", size = "small", theme }) => getVariant(position, size, theme!)}
 `;
 
-export const Spacer = ({ position = "top", size = "small" }: SpacerProps) => {
-  return <SpacerView position={position} size={size} />;
+export const Spacer = ({ position = "top", size = "small", children }: SpacerProps) => {
+  return (
+    <SpacerView position={position} size={size}>
+      {children}
+    </SpacerView>
+  );
 };
 
 Spacer.defaultProps = {
