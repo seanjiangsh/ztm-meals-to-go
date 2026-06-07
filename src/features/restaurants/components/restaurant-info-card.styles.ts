@@ -7,7 +7,7 @@ import { space } from "@/infra/spacing";
 import { Text } from "./typography/text.component";
 
 export const CardContainer = styled(Card)`
-  background-color: ${colors.bg.primary};
+  background-color: ${colors.bg.secondary};
   border-radius: ${space[3]};
   margin-bottom: ${space[3]};
   overflow: hidden;

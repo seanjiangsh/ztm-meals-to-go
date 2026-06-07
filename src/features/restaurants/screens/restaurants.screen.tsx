@@ -11,7 +11,7 @@ import { space } from "@/infra/spacing";
 
 const MOCK_RESTAURANTS = Array.from({ length: 15 }, (_, i) => ({ name: i + 1 }));
 
-const SafeAreaContainer = styled(SafeAreaView)`
+const SafeAreaContainer = styled(SafeAreaView).attrs({ edges: ["top"] })`
   flex: 1;
   background-color: ${colors.bg.primary};
 `;
@@ -36,6 +36,10 @@ function RestaurantsScreen() {
           placeholder="Search restaurants"
           value={searchQuery}
           onChangeText={setSearchQuery}
+          style={{ backgroundColor: colors.bg.secondary }}
+          inputStyle={{ color: colors.text.primary }}
+          placeholderTextColor={colors.text.secondary}
+          iconColor={colors.text.secondary}
         />
       </SearchBarContainer>
       <RestaurantList
