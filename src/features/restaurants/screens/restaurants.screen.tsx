@@ -1,20 +1,15 @@
 import { memo, useState } from "react";
 import { FlatList, View } from "react-native";
 import { Searchbar } from "react-native-paper";
-import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 
+import { SafeArea } from "@/components/safe-area.component";
 import RestaurantInfoCard from "@/features/restaurants/components/restaurant-info-card.component";
 import { Spacer } from "@/features/restaurants/components/spacer.component";
 import { colors } from "@/infra/colors";
 import { space } from "@/infra/spacing";
 
 const MOCK_RESTAURANTS = Array.from({ length: 15 }, (_, i) => ({ name: i + 1 }));
-
-const SafeAreaContainer = styled(SafeAreaView).attrs({ edges: ["top"] })`
-  flex: 1;
-  background-color: ${colors.bg.primary};
-`;
 
 const SearchBarContainer = styled(View)`
   padding: ${space[3]};
@@ -30,7 +25,7 @@ function RestaurantsScreen() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <SafeAreaContainer>
+    <SafeArea>
       <SearchBarContainer>
         <Searchbar
           placeholder="Search restaurants"
@@ -51,7 +46,7 @@ function RestaurantsScreen() {
           </Spacer>
         )}
       />
-    </SafeAreaContainer>
+    </SafeArea>
   );
 }
 
