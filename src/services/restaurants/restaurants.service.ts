@@ -1,20 +1,22 @@
+import camelize from "camelize";
 import { mocks, mockImages } from "./mock";
 import type { Restaurant, RestaurantsApiResponse, RawRestaurant } from "./restaurants.types";
 
 function transformRestaurant(raw: RawRestaurant, index: number): Restaurant {
+  const c = camelize(raw) as Record<string, any>;
   return {
-    placeId: raw.place_id,
-    name: raw.name,
-    icon: raw.icon,
+    placeId: c.placeId,
+    name: c.name,
+    icon: c.icon,
     photos: [mockImages[index % mockImages.length]],
     address: raw.vicinity,
-    isOpenNow: raw.opening_hours?.open_now ?? false,
-    isClosedTemporarily: raw.business_status === "CLOSED_TEMPORARILY",
-    rating: raw.rating ?? 0,
-    userRatingsTotal: raw.user_ratings_total ?? 0,
-    types: raw.types,
-    priceLevel: raw.price_level,
-    geometry: raw.geometry
+    isOpenNow: c.openingHours?.openNow ?? false,
+    isClosedTemporarily: c.businessStatus === "CLOSED_TEMPORARILY",
+    rating: c.rating ?? 0,
+    userRatingsTotal: c.userRatingsTotal ?? 0,
+    types: c.types,
+    priceLevel: c.priceLevel,
+    geometry: c.geometry,
   };
 }
 
