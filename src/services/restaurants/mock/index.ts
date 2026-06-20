@@ -13,11 +13,11 @@ export const mocks: Record<string, RestaurantsApiResponse> = {
 };
 
 export const mockImages: string[] = [
-  "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-  "https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-oranges-ice-600x750.jpg",
-  "https://www.foodiesfeed.com/wp-content/uploads/2020/08/detail-of-pavlova-strawberry-piece-of-cake-600x800.jpg",
-  "https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-baking-600x750.jpg",
-  "https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-pancakes-600x750.jpg",
-  "https://www.foodiesfeed.com/wp-content/uploads/2019/02/messy-pizza-on-a-black-table-600x400.jpg",
-  "https://www.foodiesfeed.com/wp-content/uploads/2019/02/pizza-ready-for-baking-600x400.jpg"
+  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+  "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600",
+  "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600",
+  "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600",
+  "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600",
+  "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600",
+  "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=600"
 ];

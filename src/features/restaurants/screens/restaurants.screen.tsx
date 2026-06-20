@@ -8,8 +8,8 @@ import RestaurantInfoCard from "@/features/restaurants/components/restaurant-inf
 import { Spacer } from "@/features/restaurants/components/spacer.component";
 import { colors } from "@/infra/colors";
 import { space } from "@/infra/spacing";
-
-const MOCK_RESTAURANTS = Array.from({ length: 15 }, (_, i) => ({ name: i + 1 }));
+import { useRestaurants } from "@/services/restaurants/restaurants.context";
+import type { Restaurant } from "@/services/restaurants/restaurants.types";
 
 const SearchBarContainer = styled(View)`
   padding: ${space[3]};
@@ -23,6 +23,7 @@ const RestaurantList = styled(FlatList).attrs({
 
 function RestaurantsScreen() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { restaurants } = useRestaurants();
 
   return (
     <SafeArea>
@@ -38,13 +39,24 @@ function RestaurantsScreen() {
         />
       </SearchBarContainer>
       <RestaurantList
-        data={MOCK_RESTAURANTS}
-        keyExtractor={(item) => String((item as { name: number }).name)}
-        renderItem={() => (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard />
-          </Spacer>
-        )}
+        data={restaurants}
+        keyExtractor={(item) => (item as Restaurant).placeId}
+        renderItem={({ item }) => {
+          const r = item as Restaurant;
+          return (
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard
+                name={r.name}
+                icon={r.icon}
+                photos={r.photos}
+                address={r.address}
+                isOpenNow={r.isOpenNow}
+                rating={r.rating}
+                isClosedTemporarily={r.isClosedTemporarily}
+              />
+            </Spacer>
+          );
+        }}
       />
     </SafeArea>
   );
