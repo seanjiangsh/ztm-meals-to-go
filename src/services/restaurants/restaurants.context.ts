@@ -9,6 +9,8 @@ import {
 import { restaurantsRequest } from "./restaurants.service";
 import type { Restaurant } from "./restaurants.types";
 
+const LOADING_DELAY_MS = 2000;
+
 interface RestaurantsContextValue {
   restaurants: Restaurant[];
   isLoading: boolean;
@@ -29,12 +31,13 @@ export function RestaurantsContextProvider({ children }: { children: ReactNode }
   useEffect(() => {
     restaurantsRequest("37.7749295,-122.4194155")
       .then((results) => {
-        setRestaurants(results);
+        setTimeout(() => {
+          setRestaurants(results);
+          setIsLoading(false);
+        }, LOADING_DELAY_MS);
       })
       .catch((e: Error) => {
         setError(e);
-      })
-      .finally(() => {
         setIsLoading(false);
       });
   }, []);
