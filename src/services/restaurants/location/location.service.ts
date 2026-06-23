@@ -1,7 +1,8 @@
+import camelize from "camelize";
 import { locations } from "./location.mock";
-import type { LocationResult } from "./location.types";
+import type { LocationResult, LatLng } from "./location.types";
 
-export const locationRequest = (searchTerm: string): Promise<LocationResult> => {
+export function locationRequest(searchTerm: string): Promise<LocationResult> {
   return new Promise((resolve, reject) => {
     const locationMock = locations[searchTerm as keyof typeof locations];
     if (!locationMock) {
@@ -9,4 +10,12 @@ export const locationRequest = (searchTerm: string): Promise<LocationResult> => 
     }
     resolve(locationMock);
   });
-};
+}
+
+export function locationTransform(result: LocationResult): LatLng {
+  const formattedResponse = camelize(result);
+  const { geometry } = formattedResponse.results[0] as { geometry: { location: LatLng } };
+  const { lat, lng } = geometry.location;
+
+  return { lat, lng };
+}
