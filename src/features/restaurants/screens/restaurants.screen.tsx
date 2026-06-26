@@ -4,6 +4,7 @@ import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
 import { SafeArea } from "@/components/safe-area.component";
+import Search from "@/components/search.component";
 import RestaurantInfoCard from "@/features/restaurants/components/restaurant-info-card.component";
 import { Spacer } from "@/features/restaurants/components/spacer.component";
 import { colors } from "@/infra/colors";
@@ -33,17 +34,7 @@ function RestaurantsScreen() {
 
   return (
     <SafeArea>
-      <SearchBarContainer>
-        <Searchbar
-          placeholder="Search restaurants"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-          style={{ backgroundColor: colors.bg.secondary }}
-          inputStyle={{ color: colors.text.primary }}
-          placeholderTextColor={colors.text.secondary}
-          iconColor={colors.text.secondary}
-        />
-      </SearchBarContainer>
+      <Search />
       {isLoading ? (
         <LoadingContainer>
           <ActivityIndicator size="large" animating color={colors.brand.primary} />
