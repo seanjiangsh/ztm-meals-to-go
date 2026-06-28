@@ -1,6 +1,11 @@
 import camelize from "camelize";
 import { mocks, mockImages } from "./mock";
-import type { Restaurant, RestaurantsApiResponse, RawRestaurant } from "./restaurants.types";
+import type {
+  Restaurant,
+  RestaurantsApiResponse,
+  RawRestaurant,
+  LatLng
+} from "./restaurants.types";
 
 function transformRestaurant(raw: RawRestaurant, index: number): Restaurant {
   const c = camelize(raw) as Record<string, any>;
@@ -16,17 +21,21 @@ function transformRestaurant(raw: RawRestaurant, index: number): Restaurant {
     userRatingsTotal: c.userRatingsTotal ?? 0,
     types: c.types,
     priceLevel: c.priceLevel,
-    geometry: c.geometry,
+    geometry: c.geometry
   };
 }
 
-export function restaurantsRequest(location: string): Promise<Restaurant[]> {
+export function restaurantsRequest(location: LatLng): Promise<Restaurant[]> {
   return new Promise((resolve, reject) => {
-    const mock = (mocks as Record<string, RestaurantsApiResponse | undefined>)[location];
+    const mock = (mocks as Record<string, RestaurantsApiResponse | undefined>)[
+      `${location.lat},${location.lng}`
+    ];
     if (mock) {
       resolve(mock.results.map(transformRestaurant));
     } else {
-      reject(new Error(`No mock data found for restaurants at location: ${location}`));
+      reject(
+        new Error(`No mock data found for restaurants at location: ${location.lat},${location.lng}`)
+      );
     }
   });
 }
